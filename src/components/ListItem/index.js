@@ -1,48 +1,7 @@
-import React, { Component } from "react";
-import { fetchData } from "./fetchData";
+import React from "react";
+import { useParams } from "react-router-dom";
 
-export default class ListItem extends Component {
-  constructor() {
-    super();
-    this.state = {
-      users: [],
-      loading: true,
-      error: null
-    };
-  }
-
-  async componentDidMount() {
-    this.setState({ loading: true });
-    try {
-      const res = await fetchData();
-      console.log("res:", res);
-      this.setState({
-        users: res.clients,
-        loading: false
-      });
-    } catch (error) {
-      console.log(error);
-      this.setState({
-        loading: false,
-        error: error
-      });
-    }
-  }
-
-  render() {
-    const { users } = this.state;
-    return (
-      <div>
-        <ul>
-          {users &&
-            users.map(user => (
-              <li key={user.id}>
-                <h1>{user.name}</h1>
-                <p>{user.description}</p>
-              </li>
-            ))}
-        </ul>
-      </div>
-    );
-  }
+export default function ListItem() {
+  let { fistname } = useParams();
+  return <div>name: {fistname}</div>;
 }
