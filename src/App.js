@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={List} />
-          <Route path="/:fistname" component={ListItem} />
+          <Route path="/:id" component={ListItem} />
           <Route component={NotFound} />
         </Switch>
       </Router>
